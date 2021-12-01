@@ -74,8 +74,8 @@ public:
 
   /// Get the transform between two frames at a given timepoint.  Can throw
   /// all the exceptions tf::lookupTransform can.
-  tf::StampedTransform lookupTransform(const std::string& target_frame, const std::string& source_frame,
-                                       double t) const override;
+  virtual tf::StampedTransform lookupTransform(const std::string& target_frame, const std::string& source_frame,
+                                               double t) const;
 
   /// Put the transform into the collection.
   void putTransform(tf::StampedTransform);
@@ -100,7 +100,7 @@ public:
 
   /// Will return the transform if it becomes available before the timeout
   /// expires, else throw a tf exception
-  tf::StampedTransform lookupTransform(const std::string& target, const std::string& source, double t) const override
+  virtual tf::StampedTransform lookupTransform(const std::string& target, const std::string& source, double t) const
   {
     ros::Time tm(t);
     tf_->waitForTransform(target, source, tm, ros::Duration(timeout_));
@@ -115,6 +115,6 @@ private:
   ros::Duration timeout_;
 };
 
-}  // namespace warehouse_ros
+}  // namespace
 
 #endif  // include guard

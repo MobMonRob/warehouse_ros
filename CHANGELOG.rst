@@ -2,35 +2,6 @@
 Changelog for package warehouse_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.9.4 (2020-04-25)
-------------------
-* Cleanup: fix catkin_lint warnings, remove obsolete test folder
-* Fix unused-parameter warnings (`#44 <https://github.com/ros-planning/warehouse_ros/issues/44>`_)
-* Bump required cmake version (`#45 <https://github.com/ros-planning/warehouse_ros/issues/45>`_)
-* Contributors: Michael Görner, Robert Haschke
-
-0.9.3 (2019-08-18)
-------------------
-* Fix const char* -> std::string conversion
-* Fix install location for warehouse_ros. (`#43 <https://github.com/ros-planning/warehouse_ros/issues/43>`_)
-* Contributors: Robert Haschke, Sean Yen
-
-0.9.2 (2018-12-07)
-------------------
-* Fix various smaller issues. (`#41 <https://github.com/ros-planning/warehouse_ros/issues/41>`_)
-  * fix guard name
-  * virtual destructor for abstract class
-  * use managed pointers - createUniqueInstance()
-  * switch to C++11
-  * clang-tidy modernize-use-override
-* Contributors: Robert Haschke
-
-0.9.1 (2018-10-17)
-------------------
-* fix missing return value (`#40 <https://github.com/ros-planning/warehouse_ros/issues/40>`_)
-* update include statements to use new pluginlib and class_loader headers (`#38 <https://github.com/ros-planning/warehouse_ros/issues/38>`_)
-* Contributors: Mikael Arguedas, Robert Haschke
-
 0.9.0 (2016-06-20)
 ------------------
 * [fix] Omit dependency on mongo (and replace with pluginlib) `#32 <https://github.com/ros-planning/warehouse_ros/issues/22>`_

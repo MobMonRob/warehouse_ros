@@ -48,6 +48,30 @@ ResultIterator<M>::ResultIterator(ResultIteratorHelper::Ptr results, bool metada
 }
 
 template <class M>
+ResultIterator<M>::ResultIterator(const ResultIterator<M>& other)
+  : results_(other.results_), metadata_only_(other.metadata_only_)
+{
+}
+
+template <class M>
+ResultIterator<M>::ResultIterator() : metadata_only_(false)
+{
+}
+
+template <class M>
+ResultIterator<M>::~ResultIterator()
+{
+}
+
+template <class M>
+ResultIterator<M>& ResultIterator<M>::operator=(const ResultIterator& other)
+{
+  results_ = other.results_;
+  metadata_only_ = other.metadata_only_;
+  return *this;
+}
+
+template <class M>
 void ResultIterator<M>::increment()
 {
   if (!results_->next())
@@ -79,4 +103,4 @@ bool ResultIterator<M>::equal(const ResultIterator<M>& other) const
   return (!results_ && !other.results_);
 }
 
-}  // namespace warehouse_ros
+}  // namespace

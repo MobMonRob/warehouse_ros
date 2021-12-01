@@ -46,10 +46,6 @@ namespace warehouse_ros
 class DatabaseConnection
 {
 public:
-  virtual ~DatabaseConnection()
-  {
-  }
-
   /// \brief Set database connection params.
   virtual bool setParams(const std::string& host, unsigned port, float timeout = 60.0) = 0;
 
@@ -87,7 +83,7 @@ protected:
                                                             const std::string& collection_name) = 0;
 };
 
-}  // namespace warehouse_ros
+}  // namespace
 
 #include "impl/database_connection_impl.hpp"
 

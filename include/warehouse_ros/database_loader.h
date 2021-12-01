@@ -35,45 +35,45 @@
 /* Author: Connor Brew */
 
 #ifndef WAREHOUSE_ROS_DATABASE_LOADER_
-#define WAREHOUSE_ROS_DATABASE_LOADER_
+#define WAREHOUSE_ROS_LOADER_
 
 #include <boost/scoped_ptr.hpp>
 #include <warehouse_ros/database_connection.h>
-#include <pluginlib/class_loader.hpp>
+#include <pluginlib/class_loader.h>
 
 namespace warehouse_ros
 {
 class DBConnectionStub : public DatabaseConnection
 {
 public:
-  bool setParams(const std::string& /*host*/, unsigned /*port*/, float /*timeout*/) override
+  bool setParams(const std::string& host, unsigned port, float timeout)
   {
     return false;
   }
-  bool setTimeout(float /*timeout*/) override
+  bool setTimeout(float timeout)
   {
     return false;
   }
-  bool connect() override
+  bool connect()
   {
     return false;
   }
-  bool isConnected() override
+  bool isConnected()
   {
     return false;
   }
-  void dropDatabase(const std::string& /*db_name*/) override
+  void dropDatabase(const std::string& db_name)
   {
     throw warehouse_ros::DbConnectException("Database is stub");
   }
-  std::string messageType(const std::string& /*db_name*/, const std::string& /*collection_name*/) override
+  std::string messageType(const std::string& db_name, const std::string& collection_name)
   {
     throw warehouse_ros::DbConnectException("Database is stub");
   }
 
 protected:
   typename MessageCollectionHelper::Ptr openCollectionHelper(const std::string& db_name,
-                                                             const std::string& collection_name) override;
+                                                             const std::string& collection_name){};
 };
 
 /// \brief This class provides the mechanism to connect to a database and reads needed ROS parameters when appropriate.
@@ -98,6 +98,6 @@ private:
   ros::NodeHandle nh_;
   boost::scoped_ptr<pluginlib::ClassLoader<warehouse_ros::DatabaseConnection> > db_plugin_loader_;
 };
-}  // namespace warehouse_ros
+}
 
 #endif

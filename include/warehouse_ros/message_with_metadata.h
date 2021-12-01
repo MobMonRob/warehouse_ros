@@ -103,6 +103,6 @@ public:
   typedef boost::shared_ptr<const MessageWithMetadata<M> > ConstPtr;
 };
 
-}  // namespace warehouse_ros
+}  // namespace
 
 #endif  // include guard

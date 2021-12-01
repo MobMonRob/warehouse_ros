@@ -85,7 +85,7 @@ typename DatabaseConnection::Ptr DatabaseLoader::loadDatabase()
   DatabaseConnection::Ptr db;
   try
   {
-    db = db_plugin_loader_->createUniqueInstance(db_plugin);
+    db.reset(db_plugin_loader_->createUnmanagedInstance(db_plugin));
   }
   catch (pluginlib::PluginlibException& ex)
   {
@@ -119,10 +119,4 @@ typename DatabaseConnection::Ptr DatabaseLoader::loadDatabase()
 
   return db;
 }
-
-MessageCollectionHelper::Ptr DBConnectionStub::openCollectionHelper(const std::string& /*db_name*/,
-                                                                    const std::string& /*collection_name*/)
-{
-  return MessageCollectionHelper::Ptr();
 }
-}  // namespace warehouse_ros

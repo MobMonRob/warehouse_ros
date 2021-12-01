@@ -56,7 +56,6 @@ public:
   virtual Query::Ptr createQuery() const = 0;
   virtual Metadata::Ptr createMetadata() const = 0;
   virtual std::string collectionName() const = 0;
-  virtual ~MessageCollectionHelper() = default;
 
   typedef boost::shared_ptr<MessageCollectionHelper> Ptr;
 };
@@ -72,8 +71,13 @@ public:
   /// created if it doesn't exist.
   MessageCollection(MessageCollectionHelper::Ptr collection);
 
-  /// \brief Default constructor
-  MessageCollection() = default;
+  /// \brief Copy constructor
+  MessageCollection(const MessageCollection& rhs);
+
+  /// \brief Destructor
+  ~MessageCollection();
+
+  MessageCollection& operator=(const MessageCollection& other);
 
   /// \brief Insert a ROS message, together with some optional metadata,
   /// into the db
@@ -125,10 +129,10 @@ public:
 
 private:
   MessageCollectionHelper::Ptr collection_;
-  bool md5sum_matches_ = false;
+  bool md5sum_matches_;
 };
 
-}  // namespace warehouse_ros
+}  // namespace
 
 #include "impl/message_collection_impl.hpp"
 
